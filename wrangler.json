@@ -1,8 +1,8 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "my-next-app",
+  "name": "goosejob-web-nextjs-cloudflare",
   "main": ".open-next/worker.js",
-  "compatibility_date": "2024-09-26",
+  "compatibility_date": "2025-01-04",
   "compatibility_flags": ["nodejs_compat"],
   "minify": true,
   "assets": {
