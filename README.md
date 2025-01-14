@@ -1,4 +1,20 @@
-# Next.js Cloudflare
+# Goosejob Web with Next.js on Cloudflare
+
+## Tech Stack
+
+- TypeScript
+- React
+- Tailwind CSS
+  - shadcn/ui
+- Next.js v15 App Router
+- Docker
+- PostgreSQL
+- Prisma
+  - ZenStack
+- Better-Auth
+- Cloudflare
+  - Workers
+  - DNS & Domain Registrar
 
 ## Getting Started
 

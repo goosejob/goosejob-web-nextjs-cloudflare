@@ -1,0 +1,22 @@
+services:
+  web:
+    image: goosejob-web
+    container_name: goosejob-web
+    build:
+      context: .
+    ports:
+      - "5173:5173"
+    depends_on:
+      - database
+
+  database:
+    image: postgres:alpine
+    container_name: goosejob-database
+    ports:
+      - "5432:5432"
+    env_file:
+      - path: .env
+        required: true
+
+volumes:
+  pgdata:

@@ -7,11 +7,23 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "docker:up": "docker compose up -d",
+    "docker:up:prod": "docker compose -f docker-compose.prod.yaml up -d",
+    "db": "prisma",
+    "db:migrate": "prisma migrate dev",
+    "db:migrate:deploy": "prisma migrate deploy",
+    "db:gen": "prisma generate --no-hints",
+    "db:seed": "prisma db seed",
+    "db:studio": "prisma studio",
     "deploy": "opennextjs-cloudflare && wrangler deploy",
     "preview": "opennextjs-cloudflare && wrangler dev",
     "cf-typegen": "wrangler types --env-interface CloudflareEnv cloudflare-env.d.ts"
   },
+  "prisma": {
+    "seed": "bun prisma/seed.ts"
+  },
   "dependencies": {
+    "@prisma/client": "^6.2.1",
     "next": "14.2.23",
     "react": "^18",
     "react-dom": "^18"
@@ -25,6 +37,7 @@
     "eslint": "^8",
     "eslint-config-next": "14.2.23",
     "postcss": "^8",
+    "prisma": "^6.2.1",
     "tailwindcss": "^3.4.1",
     "typescript": "^5",
     "wrangler": "^3.102.0"
