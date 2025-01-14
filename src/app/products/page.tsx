@@ -14,7 +14,7 @@ export default async function Page() {
 
   return (
     <div className="space-y-8 p-10">
-      <h1 className="text-2xl font-bold">Goosejob</h1>
+      <h1 className="text-2xl font-bold">Available Products</h1>
 
       <ul className="space-y-4">
         {products.map((product) => {
