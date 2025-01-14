@@ -26,8 +26,9 @@ export const metadata: Metadata = {
 
 const configNavItems = [
   { href: "/", text: "Home" },
-  { href: "/about", text: "About" },
   { href: "/products", text: "Products" },
+  { href: "/about", text: "About" },
+  { href: "/admin", text: "Admin" },
 ];
 
 export default function RootLayout({
@@ -46,24 +47,30 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          <nav className="flex justify-between gap-4">
-            <ul className="inline-flex gap-4 p-4">
-              {configNavItems.map((navItem, index) => (
-                <li key={index}>
-                  <Link href={navItem.href}>{navItem.text}</Link>
-                </li>
-              ))}
-            </ul>
+          <header className="p-4">
+            <nav className="bg-stone-900 rounded flex justify-between items-center gap-4">
+              <ul className="inline-flex gap-6 px-6 py-2">
+                {configNavItems.map((navItem, index) => (
+                  <li key={index}>
+                    <Link href={navItem.href} className="font-bold">
+                      {navItem.text}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
 
-            <div className="p-4">
-              <ThemeModeToggle />
-            </div>
-          </nav>
+              <div className="p-4">
+                <ThemeModeToggle />
+              </div>
+            </nav>
+          </header>
 
-          <main className="min-h-screen">{children}</main>
+          <main className="min-h-screen p-4">{children}</main>
 
           <footer>
-            <p className="p-2 text-center">Goosejob</p>
+            <p className="p-2 text-center text-sm text-secondary">
+              {new Date().getFullYear()} &copy; Goosejob
+            </p>
           </footer>
         </ThemeProvider>
       </body>

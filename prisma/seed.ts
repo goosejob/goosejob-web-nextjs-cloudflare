@@ -1,5 +1,5 @@
 import { PrismaClient } from "@prisma/client";
-import { dataJobs } from "./data/jobs";
+import { dataJobs } from "../src/data/jobs";
 import slugify from "slugify";
 
 const prisma = new PrismaClient();
