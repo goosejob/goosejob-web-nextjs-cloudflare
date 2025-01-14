@@ -1,17 +1,18 @@
 import { Logo } from "@/components/shared/logo";
-import { Button } from "@/components/ui/button";
 import { prisma } from "@/utils/db";
-import { TrashIcon } from "lucide-react";
+import { DeleteJobButton } from "@/app/home/delete-job";
 
 export default async function Page() {
   const jobs = await prisma.job.findMany();
 
   return (
     <div className="flex justify-center">
-      <div className="space-y-8">
+      <div className="space-y-8 max-w-xl w-full">
         <Logo />
 
-        <ul className="space-y-4 max-w-4xl">
+        {jobs.length <= 0 && <p>No jobs available</p>}
+
+        <ul className="space-y-4">
           {jobs.map((job) => {
             return (
               <li key={job.id}>
@@ -22,9 +23,7 @@ export default async function Page() {
                   </div>
 
                   <div>
-                    <Button variant="destructive" size="icon-sm">
-                      <TrashIcon />
-                    </Button>
+                    <DeleteJobButton id={job.id} />
                   </div>
                 </section>
               </li>

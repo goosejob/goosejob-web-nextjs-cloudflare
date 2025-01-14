@@ -1,4 +1,4 @@
-import { ResetButton } from "./reset-button";
+import { ResetDatabaseButton } from "./reset-database";
 
 export default function Page() {
   return (
@@ -6,7 +6,7 @@ export default function Page() {
       <h1 className="text-7xl font-black">Admin</h1>
 
       <div>
-        <ResetButton />
+        <ResetDatabaseButton />
       </div>
     </div>
   );
