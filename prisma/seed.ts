@@ -1,20 +1,25 @@
 import { PrismaClient } from "@prisma/client";
+import { dataJobs } from "./data/jobs";
+import slugify from "slugify";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  const upsertedJob = await prisma.job.upsert({
-    where: { slug: "software-engineer" },
-    update: {
-      title: "Software Engineer",
-    },
-    create: {
-      slug: "software-engineer",
-      title: "Software Engineer",
-    },
-  });
+  for (const job of dataJobs) {
+    const jobUpsertData = {
+      slug: slugify(job.title, { lower: true }),
+      title: job.title,
+      description: job.description,
+    };
 
-  console.log(`💼 Job: ${upsertedJob.title}`);
+    const upsertedJob = await prisma.job.upsert({
+      where: { slug: jobUpsertData.slug },
+      update: jobUpsertData,
+      create: jobUpsertData,
+    });
+
+    console.log(`💼 Job: ${upsertedJob.title} (${upsertedJob.slug})`);
+  }
 }
 
 main()
