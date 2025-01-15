@@ -26,7 +26,9 @@
     "seed": "bun prisma/seed.ts"
   },
   "dependencies": {
+    "@prisma/adapter-pg-worker": "^6.2.1",
     "@prisma/client": "^6.2.1",
+    "@prisma/pg-worker": "^6.2.1",
     "@radix-ui/react-dropdown-menu": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
     "class-variance-authority": "^0.7.1",

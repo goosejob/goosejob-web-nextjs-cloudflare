@@ -17,6 +17,10 @@
   - Workers
   - DNS & Domain Registrar
 
+References:
+
+- [Deploy to Cloudflare Workers & Pages - Prisma Docs](https://prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare)
+
 ## Getting Started
 
 First, run the development server:
