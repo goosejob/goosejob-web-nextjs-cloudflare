@@ -11,6 +11,7 @@
 - PostgreSQL
   - Neon.tech
 - Prisma
+  - Prisma Accelerate
   - ZenStack
 - Better-Auth
 - Cloudflare
