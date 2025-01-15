@@ -1,5 +1,5 @@
 import { Logo } from "@/components/shared/logo";
-import { prisma } from "@/utils/db";
+import { prisma } from "@/lib/database";
 import { DeleteJobButton } from "@/app/home/delete-job";
 
 export default async function Page() {

@@ -3,7 +3,7 @@
 import slugify from "slugify";
 
 import { dataJobs } from "@/data/jobs";
-import { prisma } from "@/utils/db";
+import { prisma } from "@/lib/database";
 import { revalidatePath } from "next/cache";
 
 export async function resetDatabase() {
@@ -33,15 +33,7 @@ export async function resetDatabase() {
 
 export async function deleteJob(id: string) {
   await new Promise((resolve) => setTimeout(resolve, 200));
-
-  try {
-    await prisma.job.delete({ where: { id } });
-
-    revalidatePath("/");
-
-    return "Deleted";
-  } catch (error) {
-    console.error(error);
-    return "Failed to delete item";
-  }
+  await prisma.job.delete({ where: { id } });
+  revalidatePath("/");
+  return "Deleted";
 }

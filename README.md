@@ -9,6 +9,7 @@
 - Next.js v15 App Router
 - Docker
 - PostgreSQL
+  - Neon.tech
 - Prisma
   - ZenStack
 - Better-Auth
