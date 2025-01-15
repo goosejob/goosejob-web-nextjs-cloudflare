@@ -20,6 +20,7 @@
 References:
 
 - [Deploy to Cloudflare Workers & Pages - Prisma Docs](https://prisma.io/docs/orm/prisma-client/deployment/edge/deploy-to-cloudflare)
+- [`@prisma/adapter-pg-worker`](https://github.com/prisma/prisma/tree/main/packages/adapter-pg-worker)
 
 ## Getting Started
 
