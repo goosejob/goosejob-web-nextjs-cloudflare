@@ -2,10 +2,15 @@ import { Pool } from "@prisma/pg-worker";
 import { PrismaPg } from "@prisma/adapter-pg-worker";
 import { PrismaClient } from "@prisma/client";
 
-const connectionString = `${process.env.DATABASE_URL}`;
+let prisma: PrismaClient;
 
-const pool = new Pool({ connectionString });
+if (process.env.NODE_ENV === "production") {
+  const connectionString = `${process.env.DATABASE_URL}`;
+  const pool = new Pool({ connectionString });
+  const adapter = new PrismaPg(pool);
+  prisma = new PrismaClient({ adapter });
+} else {
+  prisma = new PrismaClient();
+}
 
-const adapter = new PrismaPg(pool);
-
-export const prisma = new PrismaClient({ adapter });
+export { prisma };
