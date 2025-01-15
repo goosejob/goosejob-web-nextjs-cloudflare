@@ -32,7 +32,6 @@ export async function resetDatabase() {
 }
 
 export async function deleteJob(id: string) {
-  await new Promise((resolve) => setTimeout(resolve, 200));
   await prisma.job.delete({ where: { id } });
   revalidatePath("/");
   return "Deleted";
