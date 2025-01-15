@@ -1,30 +1,20 @@
-import { PrismaClient } from "@prisma/client";
-import { PrismaNeon } from "@prisma/adapter-neon";
-import { Pool, neonConfig } from "@neondatabase/serverless";
-import ws from "ws";
+import { PrismaClient } from "@prisma/client/edge";
+import { withAccelerate } from "@prisma/extension-accelerate";
 
-neonConfig.webSocketConstructor = ws;
+// Learn more about instantiating PrismaClient in Next.js here: https://www.prisma.io/docs/data-platform/accelerate/getting-started
 
-// To work in edge environments (Cloudflare Workers, Vercel Edge, etc.), enable querying over fetch
-neonConfig.poolQueryViaFetch = true;
+const prismaClientSingleton = () => {
+  return new PrismaClient().$extends(withAccelerate());
+};
 
-const connectionString = `${process.env.DATABASE_URL}`;
+type PrismaClientSingleton = ReturnType<typeof prismaClientSingleton>;
 
-let prisma: PrismaClient;
+const globalForPrisma = globalThis as unknown as {
+  prisma: PrismaClientSingleton | undefined;
+};
 
-if (
-  process.env.NODE_ENV === "development" ||
-  process.env.NEXTJS_ENV === "development"
-) {
-  console.log("Development");
-
-  prisma = new PrismaClient();
-} else {
-  console.log("Production");
-
-  const pool = new Pool({ connectionString });
-  const adapter = new PrismaNeon(pool);
-  prisma = new PrismaClient({ adapter });
-}
+const prisma = globalForPrisma.prisma ?? prismaClientSingleton();
 
 export { prisma };
+
+if (process.env.NODE_ENV !== "production") globalForPrisma.prisma = prisma;

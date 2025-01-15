@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev --turbo",
     "b": "bun run build",
-    "build": "prisma generate --no-hints && next build",
+    "build": "prisma generate --no-engine && next build",
     "start": "next start",
     "lint": "next lint",
     "typecheck": "tsc --noEmit --incremental",
@@ -31,6 +31,7 @@
     "@prisma/adapter-pg": "^6.2.1",
     "@prisma/adapter-pg-worker": "^6.2.1",
     "@prisma/client": "^6.2.1",
+    "@prisma/extension-accelerate": "^1.2.1",
     "@prisma/pg-worker": "^6.2.1",
     "@radix-ui/react-dropdown-menu": "^2.1.4",
     "@radix-ui/react-slot": "^1.1.1",
