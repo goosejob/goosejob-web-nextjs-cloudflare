@@ -15,7 +15,7 @@
     "db": "prisma",
     "db:migrate": "prisma migrate dev",
     "db:migrate:deploy": "prisma migrate deploy",
-    "db:gen": "prisma generate --no-hints",
+    "db:gen": "prisma generate --no-engine --no-hints",
     "db:seed": "prisma db seed",
     "db:studio": "prisma studio",
     "deploy": "opennextjs-cloudflare && wrangler deploy",
