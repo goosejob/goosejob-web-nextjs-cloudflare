@@ -44,7 +44,8 @@
     "react-dom": "^18",
     "slugify": "^1.6.6",
     "tailwind-merge": "^2.6.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "ws": "^8.18.0"
   },
   "devDependencies": {
     "@cloudflare/workers-types": "^4.20250109.0",
@@ -53,6 +54,8 @@
     "@types/pg": "^8.11.10",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@types/ws": "^8.5.13",
+    "bufferutil": "^4.0.9",
     "eslint": "^8",
     "eslint-config-next": "14.2.23",
     "postcss": "^8",
